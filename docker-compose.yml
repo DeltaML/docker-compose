@@ -1,12 +1,18 @@
 version: '3'
 services:
   cte_federated_trainer:
+    build:
+      context: '../federated-aggregator'
+      dockerfile: '../federated-aggregator/Dockerfile'
     image: "cte_federated_aggregator:latest"
     ports:
        - "8080:8080"
     networks:
       - backend
   cte_data_owner:
+    build:
+      context: '../data-owner'
+      dockerfile: '../data-owner/Dockerfile'
     image: "cte_data_owner:latest"
     ports:
      - "5000-5004:5000"
@@ -23,6 +29,9 @@ services:
 #    depends_on:
 #      - cte_data_owner
   cte_model_buyer:
+    build:
+      context: '../model-buyer'
+      dockerfile: '../model-buyer/Dockerfile'
     image: "cte_model_buyer:latest"
     ports:
      - "9090:9090"

@@ -7,6 +7,9 @@ Previosly to run the actors using docker-compose, build the corresponding images
 - `docker image build --tag cte_model_buyer:latest .`
 - `docker image build --tag cte_data_owner_ui:latest .`
 
+Or run
+`docker-compose build`
+
 After that, run:
 `docker-compose up --scale cte_data_owner=5`
 
