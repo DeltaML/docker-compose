@@ -1,7 +1,10 @@
 version: '3'
 services:
-  cte_federated_agregator:
-    image: deltaml/federated-agregator:latest
+  cte_federated_trainer:
+    build:
+      context: '../federated-aggregator'
+      dockerfile: '../federated-aggregator/Dockerfile'
+    image: "cte_federated_aggregator:latest"
     ports:
        - "8080:8080"
     networks:
@@ -13,7 +16,7 @@ services:
     networks:
       - backend
     depends_on:
-      - cte_federated_agregator
+      - cte_federated_trainer
   cte_model_buyer:
     image: deltaml/model-buyer:latest
     ports:

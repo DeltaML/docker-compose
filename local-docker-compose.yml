@@ -1,0 +1,43 @@
+version: '3'
+services:
+  cte_federated_trainer:
+    build:
+      context: '../federated-aggregator'
+      dockerfile: '../federated-aggregator/Dockerfile'
+    image: "cte_federated_aggregator:local-latest"
+    ports:
+       - "8080:8080"
+    networks:
+      - backend
+  cte_data_owner:
+    build:
+      context: '../data-owner'
+      dockerfile: '../data-owner/Dockerfile'
+    image: "cte_data_owner:local-latest"
+    ports:
+     - "5000-5004:5000"
+    networks:
+      - backend
+    depends_on:
+      - cte_federated_trainer
+#  cte_data_owner_ui:
+#    image: "cte_data_owner_ui:latest"
+#    ports:
+#     - "3000-3004:3000"
+#    networks:
+#      - backend
+#    depends_on:
+#      - cte_data_owner
+  cte_model_buyer:
+    build:
+      context: '../model-buyer'
+      dockerfile: '../model-buyer/Dockerfile'
+    image: "cte_model_buyer:local-latest"
+    ports:
+     - "9090:9090"
+    networks:
+      - backend
+    volumes:
+    - ./db_dir:/app/db
+networks:
+  backend:
