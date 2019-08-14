@@ -11,7 +11,10 @@ Or run
 `docker-compose build`
 
 After that, run:
-`docker-compose up --scale cte_data_owner=5`
+
+`docker-compose up --scale cte_data_owner=<NUM_DATA_OWNERS>`
+
+`docker-compose -f docker-compose.yml -f local-docker-compose.yml up --build --scale cte_data_owner=<NUM_DATA_OWNERS>`
 
 This will run 1 model_buyer, 1 federated_aggregator, and 5 data_owners
 
