@@ -9,7 +9,7 @@ services:
   cte_data_owner:
     image: deltaml/model-buyer:latest
     ports:
-     - "5000-5004:5000"
+     - "5000:5000"
     networks:
       - backend
     depends_on:
