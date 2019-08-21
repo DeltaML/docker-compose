@@ -22,5 +22,11 @@ services:
       - backend
     volumes:
     - ./db_dir:/app/db
+  cte_model_buyer_ui:
+    image: deltaml/model-buyer-ui:latest
+    ports:
+     - "3000:3000"
+    networks:
+      - backend
 networks:
   backend:
