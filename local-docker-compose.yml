@@ -45,7 +45,7 @@ services:
       dockerfile: Dockerfile
     image: "cte_model_buyer_ui:local-latest"
     ports:
-     - "3000:3000"
+     - "7070:3000"
     networks:
       - backend
     depends_on:

@@ -25,7 +25,7 @@ services:
   cte_model_buyer_ui:
     image: deltaml/model-buyer-ui:latest
     ports:
-     - "3000:3000"
+     - "7070:3000"
     networks:
       - backend
 networks:
