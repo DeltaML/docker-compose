@@ -16,18 +16,11 @@ services:
     image: "cte_data_owner:local-latest"
     ports:
      - "5000-5004:5000"
+     - "4000-4004:4000"
     networks:
       - backend
     depends_on:
       - cte_federated_trainer
-#  cte_data_owner_ui:
-#    image: "cte_data_owner_ui:latest"
-#    ports:
-#     - "3000-3004:3000"
-#    networks:
-#      - backend
-#    depends_on:
-#      - cte_data_owner
   cte_model_buyer:
     build:
       context: ../model-buyer
@@ -45,7 +38,7 @@ services:
       dockerfile: Dockerfile
     image: "cte_model_buyer_ui:local-latest"
     ports:
-     - "7070:3000"
+     - "7070:5000"
     networks:
       - backend
     depends_on:
