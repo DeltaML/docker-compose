@@ -1,6 +1,6 @@
 version: '3'
 services:
-  cte_federated_trainer:
+  cte_federated_aggregator:
     image: deltaml/federated-aggregator:latest
     ports:
        - "8080:8080"
@@ -13,7 +13,7 @@ services:
     networks:
       - backend
     depends_on:
-      - cte_federated_trainer
+      - cte_federated_aggregator
   cte_model_buyer:
     image: deltaml/model-buyer:latest
     ports:

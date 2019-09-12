@@ -1,6 +1,6 @@
 version: '3'
 services:
-  cte_federated_trainer:
+  cte_federated_aggregator:
     build:
       context: ../federated-aggregator
       dockerfile: Dockerfile
@@ -20,7 +20,7 @@ services:
     networks:
       - backend
     depends_on:
-      - cte_federated_trainer
+      - cte_federated_aggregator
   cte_model_buyer:
     build:
       context: ../model-buyer
