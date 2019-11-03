@@ -1,5 +1,11 @@
 version: '3'
 services:
+  cte_ganache_cli:
+    image: trufflesuite/ganache-cli:latest
+    ports:
+       - "8545:8545"
+    networks:
+      - backend
   cte_federated_aggregator:
     build:
       context: ../federated-aggregator

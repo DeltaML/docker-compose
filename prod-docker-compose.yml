@@ -1,5 +1,11 @@
 version: '3'
 services:
+  cte_ganache_cli:
+    image: trufflesuite/ganache-cli:latest
+    ports:
+       - "8545:8545"
+    networks:
+      - backend
   cte_federated_aggregator:
     image: deltaml/federated-aggregator:latest
     ports:
@@ -7,9 +13,10 @@ services:
     networks:
       - backend
   cte_data_owner:
-    image: deltaml/model-buyer:latest
+    image: deltaml/data-owner:latest
     ports:
-     - "5000:5000"
+     - "5000-5004:5000"
+     - "4000-4004:4000"
     networks:
       - backend
     depends_on:
